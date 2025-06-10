@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Mengalihkan ke YouTube...</title>
+  <script>
+    let countdown = 3;
+
+    const videoId = "9sE5kEnitqE";
+    const youtubeUri = `vnd.youtube:${videoId}`; // Android
+    const youtubeWeb = "https://www.youtube.com/watch?v=9sE5kEnitqE&list=PLZhdfvzD7J6mg5RCzyiy1c_afOhPBmvLd&index=1"; // lengkap
+
+    function redirectToYouTube() {
+      window.location.href = youtubeUri;
+
+      const interval = setInterval(() => {
+        document.getElementById("countdown").innerText = countdown;
+        countdown--;
+        if (countdown < 0) {
+          clearInterval(interval);
+          window.location.href = youtubeWeb;
+        }
+      }, 1000);
+    }
+  </script>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(to right, #ff0000, #cc0000);
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+    }
+
+    .container {
+      background: rgba(0,0,0,0.3);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .countdown {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: yellow;
+    }
+  </style>
+</head>
+<body onload="redirectToYouTube()">
+  <div class="container">
+    <h1>Mengalihkan ke YouTube...</h1>
+    <p>Jika aplikasi tersedia, video akan dibuka di aplikasi YouTube.</p>
+    <p>Jika tidak, kamu akan diarahkan ke versi web dalam:</p>
+    <div id="countdown" class="countdown">3</div>
+  </div>
+</body>
+</html>
